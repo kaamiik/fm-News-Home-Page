@@ -1,15 +1,26 @@
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   const closeButton = document.querySelector(".nav-close");
   const openButton = document.querySelector(".nav-open");
   const nav = document.querySelector(".nav");
   const largeScreen = 64;
 
-  // Check if it's mobile view
-  if (window.matchMedia(`(max-width: ${largeScreen}rem)`).matches) {
-    // Disable focus for each focusable child when the page loads
+  // Function to disable focus for each focusable child
+  function disableFocus() {
     nav.querySelectorAll("a, button").forEach(function (el) {
       el.setAttribute("tabindex", "-1");
     });
+  }
+
+  // Function to enable focus for each focusable child
+  function enableFocus() {
+    nav.querySelectorAll("a, button").forEach(function (item) {
+      item.removeAttribute("tabindex");
+    });
+  }
+
+  // Check if it's mobile view
+  if (window.matchMedia(`(max-width: ${largeScreen}rem)`).matches) {
+    disableFocus();
   }
 
   // Function to open the navigation menu
@@ -19,10 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     openButton.setAttribute("aria-expanded", "true");
     nav.setAttribute("aria-hidden", "false");
 
-    // Enable focus for each focusable child
-    nav.querySelectorAll("a, button").forEach(function (item) {
-      item.removeAttribute("tabindex");
-    });
+    enableFocus();
 
     // Focus the first focusable element inside the nav
     nav.querySelector("a, button").focus();
@@ -38,10 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
     openButton.setAttribute("aria-expanded", "false");
     nav.setAttribute("aria-hidden", "true");
 
-    // Disable focus for each focusable child
-    nav.querySelectorAll("a, button").forEach(function (item) {
-      item.setAttribute("tabindex", "-1");
-    });
+    disableFocus();
 
     // Focus back on the hamburger icon
     openButton.focus();
