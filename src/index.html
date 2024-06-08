@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | News homepage</title>
+    <script defer src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container split">
+        <a href="#" aria-label="W. - Home" class="logo">
+          <img src="assets/images/logo.svg" alt="" />
+        </a>
+        <button
+          aria-label="open navigation"
+          aria-expanded="false"
+          aria-controls="navMenu"
+          class="nav-open"
+        >
+          <img src="assets/images/icon-menu.svg" alt="" />
+        </button>
+        <nav class="nav" id="navMenu" aria-hidden="true">
+          <button
+            aria-label="close navigation"
+            aria-expanded="true"
+            aria-controls="navMenu"
+            class="nav-close"
+          >
+            <img src="assets/images/icon-menu-close.svg" alt="" />
+          </button>
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="#" class="nav-link |fs-nav-link clr-neutral-600">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link |fs-nav-link clr-neutral-600">New</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link |fs-nav-link clr-neutral-600"
+                >Popular</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link |fs-nav-link clr-neutral-600"
+                >Trending</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link |fs-nav-link clr-neutral-600"
+                >Categories</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="container grid">
+        <!-- Visually Hidden Main Heading for Accessibility -->
+        <h1 class="visually-hidden">Main Content</h1>
+
+        <h2 class="main-title | fs-main-title fw-extra-bold clr-neutral-800">
+          The Bright Future of Web 3.0?
+        </h2>
+        <picture class="main-image">
+          <source
+            srcset="assets/images/image-web-3-desktop.jpg"
+            media="(min-width: 46rem)"
+          />
+          <img
+            src="assets/images/image-web-3-mobile.jpg"
+            alt="A vibrant and colorful arrangement of various wooden blocks in different shapes and sizes. The blocks are painted in bold hues of red, blue, yellow, and orange, and are placed on a black surface. Some blocks have cut-out shapes, while others have cylindrical pegs inserted into holes, creating a visually engaging and playful composition."
+          />
+        </picture>
+        <div class="main-description flow">
+          <p>
+            We dive into the next evolution of the web that claims to put the
+            power of the platforms back into the hands of the people. But is it
+            really fulfilling its promise?
+          </p>
+          <a href="#" class="btn">Read more</a>
+        </div>
+        <div class="new-section | clr-neutral-300 bg-neutral-800">
+          <h2 class="visually-hidden">New Articles</h2>
+          <h3 class="new-title | fs-new-title clr-primary-yellow">New</h3>
+          <ul class="new-list">
+            <li class="new-item">
+              <a
+                href="#"
+                class="new-link | fs-600 fw-extra-bold clr-neutral-200"
+                >Hydrogen VS Electric Cars</a
+              >
+              <p class="new-description">
+                Will hydrogen-fueled cars ever catch up to EVs?
+              </p>
+            </li>
+            <li class="new-item">
+              <a
+                href="#"
+                class="new-link | fs-600 fw-extra-bold clr-neutral-200"
+                >The Downsides of AI Artistry</a
+              >
+              <p class="new-description">
+                What are the possible adverse effects of on-demand AI image
+                generation?
+              </p>
+            </li>
+            <li class="new-item">
+              <a
+                href="#"
+                class="new-link | fs-600 fw-extra-bold clr-neutral-200"
+                >Is VC Funding Drying Up?</a
+              >
+              <p class="new-description">
+                Private funding by VC firms is down 50% YOY. We take a look at
+                what that means.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="article">
+          <div class="article-content">
+            <h3 class="visually-hidden">Article 1</h3>
+            <h3 class="article-number | fs-700 fw-bold clr-primary-soft-red">
+              01
+            </h3>
+            <a href="#" class="article-link | fs-500 fw-extra-bold"
+              >Reviving Retro PCs</a
+            >
+            <p class="article-description">
+              What happens when old PCs are given modern upgrades?
+            </p>
+          </div>
+          <img
+            src="assets/images/image-retro-pcs.jpg"
+            alt="A nostalgic scene featuring various retro computing and gaming devices. The image includes an old personal computer with a monochrome monitor and keyboard, a vintage handheld game console, a classic joystick, and several audio cassette tapes. The scene is bathed in moody, neon lighting, creating a vibrant and atmospheric look reminiscent of the 1980s and early 1990s tech era."
+            class="article-image"
+          />
+        </div>
+        <div class="article">
+          <div class="article-content">
+            <h3 class="visually-hidden">Article 2</h3>
+            <h3 class="article-number | fs-700 fw-bold clr-primary-soft-red">
+              02
+            </h3>
+            <a
+              href="#"
+              class="article-link | fs-500 fw-extra-bold clr-neutral-800"
+              >Top 10 Laptops of 2022</a
+            >
+            <p class="article-description">
+              Our best picks for various needs and budgets.
+            </p>
+          </div>
+          <img
+            src="assets/images/image-top-laptops.jpg"
+            alt="Close-up of a backlit mechanical keyboard with red illumination on the keys, showcasing a modern and sleek design."
+            class="article-image"
+          />
+        </div>
+        <div class="article">
+          <div class="article-content">
+            <h3 class="visually-hidden">Article 3</h3>
+            <h3 class="article-number | fs-700 fw-bold clr-primary-soft-red">
+              03
+            </h3>
+            <a
+              href="#"
+              class="article-link | fs-500 fw-extra-bold clr-neutral-800"
+              >The Growth of Gaming</a
+            >
+            <p class="article-description">
+              How the pandemic has sparked fresh opportunities.
+            </p>
+          </div>
+          <img
+            src="assets/images/image-gaming-growth.jpg"
+            alt="A white gaming controller with black buttons and analog sticks is levitating above a person's open hand against a grey background."
+            class="article-image"
+          />
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Kamran Kiani</a>.
+      </div>
+    </footer>
+  </body>
+</html>

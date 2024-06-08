@@ -1,0 +1,492 @@
+@use "sass:math";
+
+// Source: https://css-tricks.com/snippets/sass/px-to-em-functions/
+// Converting pixel to rem
+@function rem($pixels, $context: 16) {
+  @return (math.div($pixels, $context)) * 1rem;
+}
+
+// Colors
+$clr-Primary-soft-red: hsl(5, 85%, 63%);
+$clr-Primary-yellow: hsl(35, 77%, 62%);
+
+$clr-Neutral-200: hsl(36, 100%, 99%);
+$clr-Neutral-300: hsl(233, 8%, 79%);
+$clr-Neutral-600: hsl(236, 13%, 42%);
+$clr-Neutral-800: hsl(240, 100%, 5%);
+
+// Font family
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter-VariableFont_slnt\,wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* This makes it variable */
+  font-style: normal;
+}
+$ff-inter: "Inter", sans-serif;
+
+// Font sizes
+$fs-200: rem(14);
+$fs-300: rem(15);
+$fs-500: rem(18);
+$fs-600: rem(20);
+$fs-700: rem(32);
+$fs-800: rem(40);
+$fs-900: rem(56);
+
+// Font weights
+$fw-400: 400;
+$fw-700: 700;
+$fw-800: 800;
+
+// Sizes
+$size-8: rem(8);
+$size-12: rem(12);
+$size-16: rem(16);
+$size-20: rem(20);
+$size-24: rem(24);
+$size-30: rem(30);
+$size-32: rem(32);
+$size-40: rem(40);
+$size-56: rem(56);
+$size-64: rem(64);
+$size-80: rem(80);
+$size-90: rem(90);
+$size-128: rem(128);
+$size-144: rem(144);
+$size-156: rem(156);
+
+// Breakpoints
+// 768px, 1200px, 1400px
+$breakpoints-up: (
+  "medium": "40rem",
+  "large": "64rem",
+  "xlarge": "90rem",
+);
+
+@mixin breakpoint($size) {
+  @media (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+// CSS Reset
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1;
+}
+
+/* A elements that don't have a class get default styles */
+a {
+  display: inline-block;
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+// Base Styles
+body {
+  background-color: $clr-Neutral-200;
+  color: $clr-Neutral-600;
+  font-size: $fs-300;
+  font-weight: $fw-400;
+  font-family: $ff-inter;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+// For adding ovelay color when the nav is open
+body:after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: hsl(0, 0%, 59%);
+  opacity: 0.5;
+  display: none;
+}
+
+body.nav-opened::after {
+  display: block;
+
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+// Header
+.header {
+  padding-top: $size-30;
+  @include breakpoint(large) {
+    padding-top: $size-90;
+  }
+}
+
+// Main
+main {
+  margin-block-start: $size-32;
+  margin-block-end: $size-80;
+
+  @include breakpoint(large) {
+    margin-block-start: $size-56;
+    margin-block-end: $size-128;
+  }
+}
+
+// Footer
+.attribution {
+  color: $clr-Neutral-800;
+  margin-top: auto;
+  font-size: rem(14);
+  text-align: center;
+}
+.attribution a {
+  color: $clr-Primary-soft-red;
+}
+
+// Composition
+.container {
+  width: min(100% - $size-32, rem(1110));
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  gap: $size-16;
+  grid-template-areas:
+    "main-image"
+    "main-title"
+    "main-description"
+    "new-section"
+    "article-one"
+    "article-two"
+    "article-three";
+
+  .main-title {
+    grid-area: main-title;
+  }
+  .main-image {
+    grid-area: main-image;
+  }
+  .main-description {
+    grid-area: main-description;
+  }
+  .new-section {
+    grid-area: new-section;
+  }
+  .article:nth-child(1) {
+    grid-area: article-one;
+  }
+  .article:nth-child(2) {
+    grid-area: article-two;
+  }
+  .article:nth-child(3) {
+    grid-area: article-three;
+  }
+
+  @include breakpoint(large) {
+    grid-template-areas:
+      "main-image main-image new-section"
+      "main-title main-description new-section"
+      "article-one article-two article-three";
+
+    gap: $size-30;
+  }
+}
+
+.split {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Utility
+.fs-500 {
+  font-size: $fs-500;
+}
+.fs-600 {
+  font-size: $fs-600;
+}
+.fs-700 {
+  font-size: $fs-700;
+}
+
+.fs-nav-link {
+  font-size: $fs-500;
+  @include breakpoint(large) {
+    font-size: $fs-300;
+  }
+}
+.fs-main-title {
+  font-size: $fs-800;
+  @include breakpoint(large) {
+    font-size: $fs-900;
+  }
+}
+.fs-new-title {
+  font-size: $fs-700;
+  @include breakpoint(large) {
+    font-size: $fs-800;
+  }
+}
+
+.fw-regular {
+  font-weight: 400;
+}
+.fw-bold {
+  font-weight: 700;
+}
+.fw-extra-bold {
+  font-weight: 800;
+}
+
+.clr-primary-soft-red {
+  color: $clr-Primary-soft-red;
+}
+.clr-primary-yellow {
+  color: $clr-Primary-yellow;
+}
+.clr-neutral-200 {
+  color: $clr-Neutral-200;
+}
+.clr-neutral-300 {
+  color: $clr-Neutral-300;
+}
+.clr-neutral-600 {
+  color: $clr-Neutral-600;
+}
+.clr-neutral-800 {
+  color: $clr-Neutral-800;
+}
+.bg-neutral-800 {
+  background: $clr-Neutral-800;
+}
+
+.main-title {
+  margin-block-start: $size-8;
+  @include breakpoint(large) {
+    margin: 0;
+  }
+}
+
+.main-image {
+  order: -1;
+}
+
+.flow > *:where(:not(:first-child)) {
+  margin-top: var(--flow-spacer, 1rem);
+}
+
+.btn {
+  font-size: $fs-200;
+  font-weight: $fw-700;
+  padding: $size-12 $size-32;
+  color: $clr-Neutral-800;
+  background: $clr-Primary-soft-red;
+  text-transform: uppercase;
+  letter-spacing: 4.38px;
+
+  &:hover,
+  &:focus {
+    background: $clr-Neutral-800;
+    color: $clr-Neutral-200;
+  }
+}
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: auto;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+// Block
+
+// Navigation
+.nav {
+  position: fixed;
+  background: $clr-Neutral-200;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100%;
+  transform: translateX(0);
+  transition: transform 250ms;
+  z-index: 10;
+  @include breakpoint(large) {
+    position: initial;
+    width: min-content;
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    gap: $size-24;
+    margin: $size-144 $size-24 0;
+    @include breakpoint(large) {
+      flex-direction: row;
+      gap: $size-40;
+      margin: 0;
+    }
+  }
+  &-link {
+    &:hover,
+    &:focus {
+      color: $clr-Primary-soft-red;
+    }
+  }
+}
+
+.nav-close {
+  border: none;
+  background: 0;
+  cursor: pointer;
+  padding: $size-32;
+  position: absolute;
+  right: 32%;
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+.nav-open {
+  border: 0;
+  background: 0;
+  z-index: 2;
+  cursor: pointer;
+
+  @include breakpoint(large) {
+    display: none;
+  }
+}
+
+.navigation-open {
+  transform: translateX(-68%);
+
+  @include breakpoint(large) {
+    transform: translateX(0);
+  }
+}
+
+// Main
+.main-description {
+  --flow-spacer: 1.5rem;
+
+  @include breakpoint(large) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
+
+// New
+.new {
+  &-section {
+    margin-block: $size-64 - rem(16);
+    padding: $size-24 $size-20;
+
+    @include breakpoint(large) {
+      padding: $size-32 $size-20;
+      margin-block: 0;
+    }
+  }
+
+  &-item {
+    padding-block-start: $size-32;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $clr-Neutral-600;
+      padding-block-end: $size-30;
+    }
+  }
+
+  &-link {
+    &:hover,
+    &:focus {
+      color: $clr-Primary-yellow;
+    }
+  }
+
+  &-description {
+    margin-top: $size-8;
+  }
+}
+
+.article {
+  display: flex;
+  gap: $size-24;
+
+  @include breakpoint(large) {
+    margin-top: $size-40;
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-link {
+    &:hover,
+    &:focus {
+      color: $clr-Primary-soft-red;
+    }
+  }
+
+  img {
+    margin: 0;
+    order: -1;
+    width: auto;
+    height: 127px;
+    object-fit: cover;
+  }
+}
