@@ -304,9 +304,9 @@ main {
 }
 
 .visibility-hidden {
-  visibility: hidden;
+  display: none;
   @include breakpoint(large) {
-    visibility: visible;
+    display: revert;
   }
 }
 
