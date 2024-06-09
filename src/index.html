@@ -14,6 +14,7 @@
 
     <title>Frontend Mentor | News homepage</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script defer src="js/script.js"></script>
   </head>
   <body>
     <header class="header">
@@ -23,16 +24,14 @@
         </a>
         <button
           aria-label="open navigation"
-          aria-expanded="false"
           aria-controls="navMenu"
           class="nav-open"
         >
           <img src="assets/images/icon-menu.svg" alt="" />
         </button>
-        <nav class="nav" id="navMenu" aria-hidden="true">
+        <nav class="nav visibility-hidden" id="navMenu" aria-hidden="true">
           <button
             aria-label="close navigation"
-            aria-expanded="true"
             aria-controls="navMenu"
             class="nav-close"
           >
@@ -67,12 +66,9 @@
 
     <main class="main-content">
       <div class="container grid">
-        <!-- Visually Hidden Main Heading for Accessibility -->
-        <h1 class="visually-hidden">Main Content</h1>
-
-        <h2 class="main-title | fs-main-title fw-extra-bold clr-neutral-800">
+        <h1 class="main-title | fs-main-title fw-extra-bold clr-neutral-800">
           The Bright Future of Web 3.0?
-        </h2>
+        </h1>
         <picture class="main-image">
           <source
             srcset="assets/images/image-web-3-desktop.jpg"
@@ -92,7 +88,6 @@
           <a href="#" class="btn">Read more</a>
         </div>
         <div class="new-section | clr-neutral-300 bg-neutral-800">
-          <h2 class="visually-hidden">New Articles</h2>
           <h3 class="new-title | fs-new-title clr-primary-yellow">New</h3>
           <ul class="new-list">
             <li class="new-item">
@@ -131,10 +126,10 @@
         </div>
         <div class="article">
           <div class="article-content">
-            <h3 class="visually-hidden">Article 1</h3>
             <h3 class="article-number | fs-700 fw-bold clr-primary-soft-red">
               01
             </h3>
+            <h3 class="visually-hidden">Article - Reviving Retro PCs</h3>
             <a href="#" class="article-link | fs-500 fw-extra-bold"
               >Reviving Retro PCs</a
             >
@@ -150,10 +145,10 @@
         </div>
         <div class="article">
           <div class="article-content">
-            <h3 class="visually-hidden">Article 2</h3>
             <h3 class="article-number | fs-700 fw-bold clr-primary-soft-red">
               02
             </h3>
+            <h3 class="visually-hidden">Article - Top 10 Laptops of 2022</h3>
             <a
               href="#"
               class="article-link | fs-500 fw-extra-bold clr-neutral-800"
@@ -171,10 +166,10 @@
         </div>
         <div class="article">
           <div class="article-content">
-            <h3 class="visually-hidden">Article 3</h3>
             <h3 class="article-number | fs-700 fw-bold clr-primary-soft-red">
               03
             </h3>
+            <h3 class="visually-hidden">Article - The Growth of Gaming</h3>
             <a
               href="#"
               class="article-link | fs-500 fw-extra-bold clr-neutral-800"
@@ -201,6 +196,5 @@
         >. Coded by <a href="#">Kamran Kiani</a>.
       </div>
     </footer>
-    <script src="js/script.js"></script>
   </body>
 </html>
